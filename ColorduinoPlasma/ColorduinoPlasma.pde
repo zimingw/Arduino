@@ -219,8 +219,10 @@ unsigned char var = 'A';
 void loop()
 {
   plasma_morph();
-
-  Serial.write(var);
-  var++;
+  while(Serial.available() > 0)
+  {
+     var = Serial.read();
+     Serial.println(var); 
+  }
 }
 
